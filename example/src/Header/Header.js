@@ -8,12 +8,17 @@ function Header(props) {
   );
 }
 
+const styleNav = {'text-decoration' : 'none',
+'list-style-type' : 'none',
+'color' : 'grey',
+}
+
 function Nav(props) {
   let data = props.nav;
-  const listItem = data.map(item => <li key={item.link}><a href={item.link}>{item.text}</a></li>);
+  const listItem = data.map(item => <li style={styleNav} key={item.link}><a style={styleNav} href={item.link}>{item.text}</a></li>);
   return (
     <nav>
-      <ul>
+      <ul >
         {listItem}
       </ul>
     </nav>
