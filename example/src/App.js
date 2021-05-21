@@ -47,7 +47,6 @@ function App() {
           Learn React
         </a>
         <div>
-          <Test />
           {goods.map( item => <Goods key={item.title} text={item.text} cost={item.cost} val={item.val} image={item.image} />)}
         </div>
       </header>
