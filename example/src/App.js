@@ -1,57 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
-import Header from './Header/Header';
-import Goods from './Goods';
+import React from "react";
+import Info from "./Components/Info";
+import Form from "./Components/Form";
+import Weather from "./Components/Weather";
 
-const textStyle = {
-  color: 'red',
-}
+const API_KEY = "a3dd94570c2459015866b99d862c3f1f";
 
-const textStylesl = {
-  color: 'green',
-}
+class App extends React.Component {
 
-const textStyles = {
-  color: '#03f',
-}
+  state = {
+    
+  }
 
-const headerData = {
-  sitename: 'my test site name',
-  nav: [
-    {"link" : "nav1", "text" : "my link"},
-    {"link" : "nav2", "text" : "my link2"},
-    {"link" : "nav3", "text" : "my link3"},
-  ]
-}
+  gettingWeather = async (e) => {
+    e.preventDefault();
+    const city = e.target.elements.city.value
+    const api_url = await 
+    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
+    const data = await api_url.json();
+    console.log(data);
+  }
 
-const goods = [
-  {"title" : "apple", "text" : "1000 g. cost: ", "cost" : 300, "val" : " $ ", "image" : "https://cdn3.iconfinder.com/data/icons/fruits-52/150/icon_fruit_maca-512.png"},
-  {"title" : "pear", "text" : "1000 g. cost: ", "cost" : 500, "val" : " $ ", "image" : "https://cdn3.iconfinder.com/data/icons/fruits-52/150/icon_fruit_pera-512.png"},
-]
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <Header data={headerData}/>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p style={textStyles}>
-          Edit <code style={textStyle}>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={textStylesl}
-        >
-          Learn React
-        </a>
-        <div>
-          {goods.map( item => <Goods key={item.title} text={item.text} cost={item.cost} val={item.val} image={item.image} />)}
-        </div>
-      </header>
-    </div>
-  );
+  render() {
+    return (
+      <div>
+        <Info />
+        <Form weatherMethod={this.gettingWeather} />
+        <Weather />
+      </div>
+    )
+  }
 }
 
 export default App;
