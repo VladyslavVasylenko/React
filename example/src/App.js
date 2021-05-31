@@ -16,6 +16,7 @@ class App extends React.Component {
     sunset: undefined,
     temp_min: undefined,
     temp_max: undefined,
+    humidity: undefined,
     error: undefined,
   }
 
@@ -59,7 +60,7 @@ class App extends React.Component {
         sunrise: timeSunrise,
         sunset: timeSunset,
         pressure: pressureInMmHg,
-        humidity: ,
+        humidity: data.main.humidity,
         error: "",
       });
     }
