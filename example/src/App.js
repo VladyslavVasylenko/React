@@ -17,6 +17,9 @@ class App extends React.Component {
     temp_min: undefined,
     temp_max: undefined,
     humidity: undefined,
+    speed: undefined,
+    deg: undefined,
+    gust: undefined,
     error: undefined,
   }
 
@@ -61,6 +64,9 @@ class App extends React.Component {
         sunset: timeSunset,
         pressure: pressureInMmHg,
         humidity: data.main.humidity,
+        speed: data.wind.speed,
+        deg: data.wind.deg,
+        gust: data.wind.gust,
         error: "",
       });
     }
@@ -81,6 +87,9 @@ class App extends React.Component {
           pressure={this.state.pressure}
           temp_min={this.state.temp_min}
           temp_max={this.state.temp_max}
+          speed={this.state.speed}
+          deg={this.state.deg}
+          gust={this.state.gust}
           error={this.state.error}
         />
       </div>
