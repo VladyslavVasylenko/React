@@ -14,6 +14,8 @@ class App extends React.Component {
     pressure: undefined,
     sunrise: undefined,
     sunset: undefined,
+    temp_min: undefined,
+    temp_max: undefined,
     error: undefined,
   }
 
@@ -31,6 +33,12 @@ class App extends React.Component {
       let temp = data.main.temp;
       let tempFToCel = Math.floor(temp);
 
+      let temp_min = data.main.temp_min;
+      let tempFToCelmin = Math.floor(temp_min);
+
+      let temp_max = data.main.temp_max;
+      let tempFToCelmax = Math.floor(temp_max);
+
       let pressure = data.main.pressure;
       let pressureInMmHg = Math.floor(pressure * 0.75006);
 
@@ -44,11 +52,14 @@ class App extends React.Component {
 
       this.setState({
         temp: tempFToCel,
+        temp_min: tempFToCelmin,
+        temp_max: tempFToCelmax,
         city: data.name,
         country: data.sys.country,
         sunrise: timeSunrise,
         sunset: timeSunset,
         pressure: pressureInMmHg,
+        humidity: ,
         error: "",
       });
     }
@@ -65,7 +76,10 @@ class App extends React.Component {
           country={this.state.country}
           sunrise={this.state.sunrise}
           sunset={this.state.sunset}
+          humidity={this.state.humidity}
           pressure={this.state.pressure}
+          temp_min={this.state.temp_min}
+          temp_max={this.state.temp_max}
           error={this.state.error}
         />
       </div>
