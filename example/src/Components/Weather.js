@@ -19,16 +19,17 @@ class Weather extends React.Component {
               </div>
               <div>
                 <p>Pressure: {this.props.pressure}</p>
-                <p>Humidity: {this.props.humidity}</p>
+                <p>Humidity: {this.props.humidity} %</p>
               </div>
               <div>
-                <p>Speed: {this.props.speed} <i class="fas fa-wind"></i></p>
+                <p>Speed: {this.props.speed} <i className="fas fa-wind"></i></p>
                 <p>Deg: {this.props.deg}</p>
                 <p>Gust: {this.props.gust}</p>
               </div>
             </div>
           </div>
         }
+        <p>{ this.props.error }</p>
       </div>
       
     )

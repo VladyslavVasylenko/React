@@ -46,13 +46,13 @@ class App extends React.Component {
       let pressure = data.main.pressure;
       let pressureInMmHg = Math.floor(pressure * 0.75006);
 
-      let sunriseInSec = data.sys.sunrise
-      let dates = new Date(sunriseInSec * 1000)
-      let timeSunrise = dates.toLocaleTimeString()
+      let sunriseInSec = data.sys.sunrise;
+      let dates = new Date(sunriseInSec * 1000);
+      let timeSunrise = dates.toLocaleTimeString();
 
-      let sunsetInSec = data.sys.sunset
-      let date = new Date(sunsetInSec * 1000)
-      let timeSunset = date.toLocaleTimeString()
+      let sunsetInSec = data.sys.sunset;
+      let date = new Date(sunsetInSec * 1000);
+      let timeSunset = date.toLocaleTimeString();
 
       this.setState({
         temp: tempFToCel,
@@ -68,6 +68,22 @@ class App extends React.Component {
         deg: data.wind.deg,
         gust: data.wind.gust,
         error: "",
+      });
+    } else {
+      this.setState ({
+        temp: undefined,
+        city: undefined,
+        country: undefined,
+        pressure: undefined,
+        sunrise: undefined,
+        sunset: undefined,
+        temp_min: undefined,
+        temp_max: undefined,
+        humidity: undefined,
+        speed: undefined,
+        deg: undefined,
+        gust: undefined,
+        error: "Write your city.",
       });
     }
   }
